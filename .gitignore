@@ -1,0 +1,8 @@
+# Ignorer dossier Env
+env/
+# Ignorer gitignore
+.gitignore
+ # Ignorer CSV_books
+CSV_books
+ # Ignorer Images_books
+Images_books
