@@ -4,9 +4,7 @@ import os
 import urllib.request
 import csv 
 
-
-def app():                      
-    extract_categories_urls()   
+# Une fonction = une action
 
 
 def extract_categories_urls():
@@ -66,8 +64,6 @@ def extract_categories_urls():
 
             extract_books_data(new_book, name_cat) # Appeler def données livres
 
-    print(len(liste_titres)) # Print liste sans doublons des titres
-
 
 def extract_books_urls(categories_urls): # Appeler liste urls pages
 
@@ -108,8 +104,8 @@ def extract_books_data(urls_books, name_cat): # Appeler liste urls livres, noms 
 
     with open("./CSV_books/" + name_cat + ".csv", "w", encoding="utf-8-sig", newline="") as outf:
             writer = csv.writer(outf, delimiter="|")
-            outf.write("URL PRODUIT" + "," + "UPC" + "," + "TITRE" + "," + "PRIX TTC" + "," + "PRIX HT" + "," + "STOCK DISPONIBLE" + "," + "DESCRIPTION" + "," 
-                   + "CATEGORIE" + "," + "NOTE" + "," + "URL IMAGE" + "\n") # En têtes
+            outf.write("URL PRODUIT" + "|" + "UPC" + "|" + "TITRE" + "|" + "PRIX TTC" + "|" + "PRIX HT" + "|" + "STOCK DISPONIBLE" + "|" + "DESCRIPTION" + "|" 
+                   + "CATEGORIE" + "|" + "NOTE" + "|" + "URL IMAGE" + "\n") # En têtes
         
             for link in urls_books:
                 books_data = []               
@@ -165,4 +161,4 @@ def extract_books_data(urls_books, name_cat): # Appeler liste urls livres, noms 
                     
                     writer.writerow(books_data) # colonnes = datas livres
 
-app()
+extract_categories_urls()
