@@ -6,7 +6,7 @@ Ce programme exécutable à la demande récupère les données des livres du sit
 
 ## Technologie :
 
-- Python
+Python
 
 
 ## Author :
@@ -28,6 +28,7 @@ $ python app.py
 
 ## DESCRIPTION :
 
+Cette aplication est un outil ETL (Extract, Transform, Load) : il extrait les données brutes et correctes de la source web "Books to Scrape", et les traite afin d'établir des listes de données exploitables en vue d'un chargement sur de nouveaux supports CSV (Comma-separated values).
 
 ```python
 def extract_categories_urls():
