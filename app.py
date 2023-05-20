@@ -4,16 +4,10 @@ import os
 import urllib.request
 import csv 
 
-# Une fonction = une action
 
 
 def extract_categories_urls():
-                                #### Quoi faire ? EXTRAIRE EN LISTE CHAQUE URL DES PAGES DES CATEGORIES
 
-                                    # Définir lien page index, 2, 3, si existent (Cibler balise html, modifier, incrémenter, condition/boléens);
-                                    # Ajouter liste (Création liste) ;
-                                    # Catégorie par catégorie = boucle ;
-                                    # Gérer les doublons (listes de comparaison, boucle) ;
 
     liste_titres = [] # Création liste référence pour gestion des doublons
 
@@ -26,10 +20,10 @@ def extract_categories_urls():
 
         categories_urls = [] # Création liste urls des pages des uls (catégories)
 
-        for ul in uls:       #### BOUCLE : Pour chaque page d'une ul (catégorie, base max 3 pages) : 
-                                            # 1) Définir url Index + ajouter liste ; 
-                                            # 2) Puis définir lien page 2 (modifier url Index) + (si existe) ajouter liste, sinon STOP ;
-                                            # 3) Puis définir lien page 3 (Incrémenter page 2) + (si existe) ajouter liste, sinon STOP ;
+        for ul in uls:       # BOUCLE : Pour chaque page d'une ul (catégorie, base max 3 pages) : 
+                                    # 1) Définir url Index + ajouter liste ; 
+                                    # 2) Puis définir lien page 2 (modifier url Index) + (si existe) ajouter liste, sinon STOP ;
+                                    # 3) Puis définir lien page 3 (Incrémenter page 2) + (si existe) ajouter liste, sinon STOP ;
 
             link = ul.find("a")["href"] 
             name = link.replace("catalogue/category/books/", "").replace("/index.html", "")
@@ -62,16 +56,10 @@ def extract_categories_urls():
                     liste_titres.append(book) # Première liste de référence
                     new_book.append(book) # Liste affinée utilisée pour extraction data ;
 
-            extract_books_data(new_book, name_cat) # Appeler def données livres
+            extract_books_data(new_book, name_cat) # Appeler fonction données livres
 
 
 def extract_books_urls(categories_urls): # Appeler liste urls pages
-
-                                            #### Quoi faire ? EXTRAIRE EN LISTE CHAQUE URL DES LIVRES
-
-                                                # Définir url livre (Cibler balise url, modifier);
-                                                # Ajouter liste (Création liste) ;
-                                                # Appliquer Url livre par Url livre = Boucle ;
 
     urls_books = [] # Création liste urls livres (Gestion doublons)
 
@@ -93,11 +81,6 @@ def extract_books_urls(categories_urls): # Appeler liste urls pages
 
 def extract_books_data(urls_books, name_cat): # Appeler liste urls livres, noms fichiers csv
 
-                                    #### Quoi faire ?
-                                    #### 1) CREER FICHIERS CSV PAR CATEGORIE : os/makedir, inclure def CSV phase 1 dans def books_data, appeler name_cat pour noms csv ;
-                                    #### 2) DEDANS, EXTRAIRE EN LISTE LES 10 DONNEES DES LIVRES : ciblage balise, url = urls_books, création liste ;
-                                    #### 3) EXTRAIRES LES IMAGES DE COUVERTURE ET LES RENOMMER AVEC TITRES CORRESPONDANTS : 
-                                    # Appliquer Livre par livre = Boucle ;
             
     if not os.path.exists("./CSV_books"):
             os.makedirs("./CSV_books")
