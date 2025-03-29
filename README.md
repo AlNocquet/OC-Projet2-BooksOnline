@@ -1,63 +1,72 @@
+# WEBSCRAPING - APP
 
-# WEBSCRAPING - APP :
+This on-demand executable program scrapes book data from the "Books to Scrape" website by category, including their cover images.
 
-Ce programme exécutable à la demande récupère les données des livres du site "Books to Scrape" par catégorie + leurs couvertures.
+---
 
-
-## Technologie :
+## Technology
 
 Python
 
+---
 
-## Author :
+## Author
 
 Alice Nocquet
 
+---
 
-## Installation de l'environnement et lancement du programme :
+## Environment setup and program execution
 
 ```bash
 $ git clone https://github.com/AlNocquet/OC-Projet2-BooksOnline.git
 $ cd OC-Projet2-BooksOnline
-$ source env/bin/activate (Sous Invite de commande Windows > python -m venv env)
-$ python3 -m venv env  (Sous Invite de commande Windows > env\Scripts\activate)
+$ source env/bin/activate        # For Linux/macOS
+$ python3 -m venv env            # For Windows
+$ env\Scripts\activate           # Windows activation
 $ pip install -r requirements.txt
 $ python app.py
-``` 
+```
 
+---
 
-## DESCRIPTION :
+## DESCRIPTION
 
-Cette aplication est un outil ETL (Extract, Transform, Load) : il extrait les données brutes et correctes de la source web "Books to Scrape", et les traite afin d'établir des listes de données exploitables en vue d'un chargement sur de nouveaux supports CSV (Comma-separated values).
+This application is an ETL tool (Extract, Transform, Load): it extracts clean raw data from the web source “Books to Scrape” and processes it to generate usable datasets, which are then saved as CSV files (Comma-Separated Values).
+
+---
 
 ```python
 def extract_categories_urls():
 ```
-Cette fonction liste les urls des pages des catégories en gérant l'exclusion des doublons ;
 
+This function retrieves all category page URLs, managing duplicates exclusion.
 
-```python
-def extract_books_urls(categories_urls):  
-```
-
-Cette fonction liste les urls des livres présentes dans les pages des catégories ;
-
+---
 
 ```python
-def extract_books_data(urls_books, name_cat):  
+def extract_books_urls(categories_urls):
 ```
 
-Cette fonction créé un dossier CSV_books incluant les fichiers .CSV par catégorie, avec les données suivantes :
+This function extracts all book URLs listed on each category page.
 
-    * "URL PRODUIT"      (product_page_url)
-    * "UPC"              (universal_product_code)
-    * "TITRE"            (title)
-    * "PRIX TTC"         (price_including_tax)
-    * "PRIX HT"          (price_excluding_tax)
-    * "STOCK DISPONIBLE" (number_available)
-    * "DESCRIPTION"      (product_description)
-    * "CATEGORIE"        (category)
-    * "NOTE"             (review_rating)
-    * "URL"              (image_url)
+---
 
-    + la création du dossier "Images_Books" incluant les images des couvertures des livres avec leurs titres associés.
+```python
+def extract_books_data(urls_books, name_cat):
+```
+
+This function creates a `CSV_books` folder containing `.CSV` files per category with the following data fields:
+
+- "PRODUCT URL"       (`product_page_url`)
+- "UPC"               (`universal_product_code`)
+- "TITLE"             (`title`)
+- "PRICE (incl. tax)" (`price_including_tax`)
+- "PRICE (excl. tax)" (`price_excluding_tax`)
+- "AVAILABILITY"      (`number_available`)
+- "DESCRIPTION"       (`product_description`)
+- "CATEGORY"          (`category`)
+- "RATING"            (`review_rating`)
+- "IMAGE URL"         (`image_url`)
+
+It also creates the folder `Images_Books` containing the book cover images, named using the corresponding titles.
