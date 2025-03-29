@@ -17,8 +17,8 @@ Alice Nocquet
 ## Installation de l'environnement et lancement du programme :
 
 ```bash
-$ git clone https://github.com/AlNocquet/OC-Projet2-Webscraping.git
-$ cd OC-Projet2-Webscraping
+$ git clone https://github.com/AlNocquet/OC-Projet2-BooksOnline.git
+$ cd OC-Projet2-BooksOnline
 $ source env/bin/activate (Sous Invite de commande Windows > python -m venv env)
 $ python3 -m venv env  (Sous Invite de commande Windows > env\Scripts\activate)
 $ pip install -r requirements.txt
