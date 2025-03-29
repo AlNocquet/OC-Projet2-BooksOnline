@@ -2,19 +2,16 @@
 
 This on-demand executable program scrapes book data from the "Books to Scrape" website by category, including their cover images.
 
----
 
 ## Technology
 
 Python
 
----
 
 ## Author
 
 Alice Nocquet
 
----
 
 ## Environment setup and program execution
 
@@ -28,13 +25,11 @@ $ pip install -r requirements.txt
 $ python app.py
 ```
 
----
 
 ## DESCRIPTION
 
 This application is an ETL tool (Extract, Transform, Load): it extracts clean raw data from the web source “Books to Scrape” and processes it to generate usable datasets, which are then saved as CSV files (Comma-Separated Values).
 
----
 
 ```python
 def extract_categories_urls():
@@ -42,7 +37,6 @@ def extract_categories_urls():
 
 This function retrieves all category page URLs, managing duplicates exclusion.
 
----
 
 ```python
 def extract_books_urls(categories_urls):
@@ -50,7 +44,6 @@ def extract_books_urls(categories_urls):
 
 This function extracts all book URLs listed on each category page.
 
----
 
 ```python
 def extract_books_data(urls_books, name_cat):
